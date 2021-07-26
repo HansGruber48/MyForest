@@ -1,0 +1,48 @@
+{% extends 'clean.html.twig' %}
+
+{% block title %} Hello Page Contact !
+{% endblock %}
+
+{% block body %}
+	<!-- Main Content-->
+	<main class="mb-4">
+		<div class="container px-4 px-lg-5">
+			<div class="row gx-4 gx-lg-5 justify-content-center">
+				<div class="col-md-10 col-lg-8 col-xl-7">
+					<p>Pour nous contacter, envoyez-nous un message via le formulaire ci-dessous.
+					   Nous vous répondrons dans les plus brefs délais.</p>
+					<div class="my-5">
+						<!-- * * * * * * * * * * * * * * *-->
+						<!-- * * SB Forms Contact Form * *-->
+						<!-- * * * * * * * * * * * * * * *-->
+						<!-- This form is pre-integrated with SB Forms.-->
+						<!-- To make this form functional, sign up at-->
+						<!-- https://startbootstrap.com/solution/contact-forms-->
+						<!-- to get an API token!-->
+						{{ form_start(contactForm) }}
+						<div class = "text-center">
+						{{ form_row(contactForm.name,{
+							label:'Nom'
+						}) }}
+						{{ form_row(contactForm.email,{
+							label:'Adresse mail'
+						}) }}
+						{{ form_row(contactForm.phone,{
+							label:'Numéro de téléphone'
+						}) }}
+						{{ form_row(contactForm.message,{
+							label:'Message'
+						}) }}
+							<div class = "text-center">	
+								<button type = "submit" class = "btn btn-primary my-3">Envoyer</button>
+							</div>
+
+						</div>
+
+						{{ form_end(contactForm) }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+{% endblock %}

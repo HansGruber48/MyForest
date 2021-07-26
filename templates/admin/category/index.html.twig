@@ -1,0 +1,77 @@
+{% extends 'admin/sbadmin.html.twig' %}
+
+    {% block title %} Gestion des catégories {% endblock %}
+    
+    {% block body %}
+    <main>
+        <h1>Gestion des catégories</h1>
+        
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        DataTable Example
+    </div>
+    <div>
+    <h6>Pour ajouter une catégorie cliquez sur ce bouton</h6>
+    <a href="{{ path('admin_category_add') }}" class="btn btn-success" >Ajouter</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Slug</th>
+                        <th>Parent</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for category in categories %}
+                    <tr>
+                        <td>{{ category.id }}</td>
+                        <td>{{ category.name }}</td>
+                        <td>{{ category.slug }}</td>
+                        <td>{{ category.parent }}</td>
+                        <td> <a href="{{ path('admin_category_modify',{id:category.id}) }}" class="btn btn-warning" >Modifier</a>  <a href="" class="btn btn-danger btn-sm modal-trigger" data-bs-toggle="modal" data-bs-target="#modalDelete" data-id="{{ category.id }}" data-title="{{ category.name }}">Supprimer</a></td>
+                    </tr>
+                {% endfor %}    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</main>
+<!-- Modal -->
+<div class="modal fade" id="modalDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Supprimer une catégorie</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            ...
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+            <a href="" class="btn btn-primary">Supprimer</a>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        window.onload = () => {            
+           let btdeletes = document.querySelectorAll(".modal-trigger")
+            for(let btdelete of btdeletes) {
+                btdelete.addEventListener("click", function(){
+                    document.querySelector(".modal-footer a").href=`/admin/category/delete/${this.dataset.id}`
+                    document.querySelector(".modal-body").innerText = `Etes-vous sûr de vouloir supprimer la catégorie ? "${this.dataset.title}"`
+                })
+            }
+        }
+    </script>
+{% endblock %}

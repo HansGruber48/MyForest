@@ -1,0 +1,73 @@
+{% extends 'clean.html.twig' %}
+
+{% block title %}Titre Home
+{% endblock %}
+{% block stylesheets %}
+<style>
+header {
+	background-image: url('{{ asset("clean/assets/img/Font-vert.jpg") }}');
+}
+
+</style>
+{% endblock %}
+{% block header %}
+	<!--Page Header-->
+	<header class="masthead">
+
+        <div class="container position-relative px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div class="site-heading">
+                        <h1>Clean Blog</h1>
+                        <span class="subheading"> A Blog Theme by Start Bootstrap </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+	
+{% endblock %}
+
+{% block body %}
+	<!-- Main Content-->
+	<div class="container position-relative px-4 px-lg-5">
+		<div class="row gx-4 gx-lg-5 justify-content-center">
+			<div class="col-md-10 col-lg-8 col-xl-7">
+				<div style="text-align:center"><h2> Introduction </h2></div>
+				<p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic ea est quas consectetur atque amet inventore
+					, laudantium unde labore fugit, cupiditate dolorem veritatis enim odit mollitia deserunt dolor quo saepe 
+					eveniet quos suscipit officiis aperiam nemo distinctio! Rem, itaque expedita? Beatae placeat possimus 
+					aspernatur earum provident praesentium tenetur vitae iste exercitationem, obcaecati ab, magnam modi ipsam
+					 maxime quia sint, totam tempore! Eos, nesciunt itaque nostrum repellendus animi id enim nam incidunt. 
+					 Nostrum incidunt praesentium voluptas tenetur! Adipisci at, exercitationem autem blanditiis voluptatem
+					  vel iusto consequuntur perferendis praesentium vero, repellat maiores harum ad odio. Non repellat 
+					  soluta voluptates dolorem at cumque magnam iure quae, numquam consequatur, fugiat voluptatibus deserunt
+					   expedita molestiae ex, alias nihil ullam rerum modi vel. Delectus earum provident numquam reiciendis 
+					   accusantium, a tempore ab molestias itaque alias aliquid animi unde cum aliquam dolore exercitationem, 
+					   ullam beatae voluptatum voluptatem blanditiis hic similique deleniti distinctio! Sunt, nobis facere 
+					   sapiente maxime voluptatibus incidunt vero illum voluptates hic neque id, maiores nihil quis voluptatum 
+					   asperiores earum amet velit fuga suscipit sequi cupiditate fugit unde voluptas. Dolorem non, eum unde 
+					   impedit iusto porro, eligendi esse similique aut in ab! Nisi vero vitae sit? Et harum nihil facere. 
+					   Nesciunt nulla doloremque veniam sequi doloribus. 
+				</p>
+				<!-- {% for post in posts %}
+				
+				<div class="post-preview">
+					<div><a href="{{ path('post_view', {slug:post.slug}) }}" style="color: hsl(0, 0%, 100%)" >{{post.title}}</a></div>
+					<img src="{{ post.image }}" alt="" style="width: 100%">
+					<p class="post-meta" style="color: hsl(0, 0%, 100%)">
+						
+						Article posté par 
+						<a href="#!" style="color: hsl(0, 0%, 100%)"><I>"{{post.user.pseudo}}"</I> le {{post.createdAt | date("d/m/Y")}}</a>
+					</p>
+				</div>
+				{% endfor %} -->
+				
+				<!-- Pager-->
+				<!-- <div class="d-flex justify-content-end mb-4">
+					<a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+					<div class="col-md-10 col-lg-3 col-xl-2"></div>						
+				</div> -->
+		</div>
+	</div>
+{% endblock %}

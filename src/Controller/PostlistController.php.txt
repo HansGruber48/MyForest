@@ -1,0 +1,58 @@
+<?php
+
+namespace App\Controller;
+
+use App\Entity\Post;
+use App\Form\PostType;
+use App\Repository\PostRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+class PostlistController extends AbstractController
+{
+    private $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
+    /**
+     * @Route("/", name="home")
+     */
+
+    public function home(PostRepository $postRepository): Response
+    {
+        $postlist = $postRepository->findAll();
+        return $this->render('postlist/index.html.twig', [
+            'controller_name' => 'PostlistController home',
+            'postlist'=> $postlist,
+        ]);
+    }
+
+     /**
+     * @Route("/postlist", name="postlist")
+     */
+    
+    public function view(Request $request,PostRepository $postRepository): Response
+    { 
+        // $post = new Post();
+        // $form = $this->createForm(PostType::class, $post);
+        // $form->handleRequest($request);
+        // if ($form->isSubmitted() && $form->isValid()) {
+        //     $entityManager = $this->getDoctrine()->getManager();
+        //     $entityManager->persist($post);
+        //     $entityManager->flush();}
+       //  $oldposts = $postRepository->findAll();
+       $postlist = $postRepository->findAll();         
+        return $this->render('postlist/postlist.html.twig', [
+            'postlist' => $postlist,
+          //  'form' => $form->createView()
+       //  'bg_image' => $posts->getImage(),
+            //'oldposts' => $oldposts,
+        ]);
+    }
+}
